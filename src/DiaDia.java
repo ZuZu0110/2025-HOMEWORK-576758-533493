@@ -26,12 +26,15 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "posa" , "prendi"};
 
 	private Partita partita;
-
+	public Labirinto labirinto;
+	public Giocatore giocatore;
+	
 	public DiaDia() {
 		this.partita = new Partita();
+		this.giocatore = new Giocatore(new Borsa());
 	}
 
 	public void gioca() {
@@ -61,6 +64,10 @@ public class DiaDia {
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		else if(comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi(comandoDaEseguire.getParametro());
+		else if(comandoDaEseguire.getNome().equals("posa"))
+			this.posa(comandoDaEseguire.getParametro());
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -89,15 +96,15 @@ public class DiaDia {
 		if(direzione==null)
 			System.out.println("Dove vuoi andare ?");
 		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
+		prossimaStanza = this.labirinto.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
 			System.out.println("Direzione inesistente");
 		else {
-			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			this.labirinto.setStanzaCorrente(prossimaStanza);
+			int cfu = this.giocatore.getCfu();
+			this.giocatore.setCfu(cfu--);
 		}
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		System.out.println(labirinto.getStanzaCorrente().getDescrizione());
 	}
 
 	/**
@@ -107,6 +114,20 @@ public class DiaDia {
 		System.out.println("Grazie di aver giocato!");  // si desidera smettere
 	}
 
+	public void prendi(String attrezzo) {
+		if(this.labirinto.getStanzaCorrente().hasAttrezzo(attrezzo)) {
+			this.giocatore.borsa.addAttrezzo(this.giocatore.borsa.getAttrezzo(attrezzo));
+			this.labirinto.getStanzaCorrente().removeAttrezzo(this.labirinto.getStanzaCorrente().getAttrezzo(attrezzo));
+		}
+	}
+	
+	public void posa(String attrezzo) {
+		if(this.giocatore.borsa.hasAttrezzo(attrezzo)) {
+			this.labirinto.getStanzaCorrente().addAttrezzo(this.giocatore.borsa.removeAttrezzo(attrezzo));
+					
+		}
+	}
+	
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();
 		gioco.gioca();
