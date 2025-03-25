@@ -1,12 +1,11 @@
+package it.uniroma3.diadia.ambienti;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Labirinto {
 	
 	public Stanza stanzaCorrente;
 	public Stanza stanzaVincente;
-	
-	public Labirinto() {
-		creaLabirinto(); 
-	}
+
 	
 	public void creaLabirinto() {
 		/* crea gli attrezzi */
