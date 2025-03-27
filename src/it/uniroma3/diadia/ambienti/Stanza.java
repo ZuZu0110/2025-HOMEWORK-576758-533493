@@ -1,4 +1,7 @@
 package it.uniroma3.diadia.ambienti;
+import java.util.Arrays;
+import java.util.Objects;
+
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -15,16 +18,16 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Stanza {
 
-	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
+	static final public int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 
 	public String nome;
-	public IOConsole io;
 	public  Attrezzo[] attrezzi;
 	public int numeroAttrezzi;   
 	public Stanza[] stanzeAdiacenti;
 	public int numeroStanzeAdiacenti;
 	public String[] direzioni;
+	public IOConsole io;
 
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -103,10 +106,12 @@ public class Stanza {
 	 * @return true se riesce ad aggiungere l'attrezzo, false atrimenti.
 	 */
 	public boolean addAttrezzo(Attrezzo attrezzo) {
+		if(attrezzo==null)
+			return false;
 		if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
 			this.attrezzi[numeroAttrezzi] = attrezzo;
 			this.numeroAttrezzi++;
-			io.mostraMessaggio(attrezzo.getNome()+ " aggiunto alla stanza");
+			io.mostraMessaggio(attrezzo.getNome() + "inserito nella stanza");
 			return true;
 		}
 		else {
@@ -141,9 +146,13 @@ public class Stanza {
 	public boolean hasAttrezzo(String nomeAttrezzo) {
 		boolean trovato;
 		trovato = false;
+		if(nomeAttrezzo==null)
+			return trovato;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
+			if(attrezzo!=null) {
+				if (attrezzo.getNome().equals(nomeAttrezzo))
+					trovato = true;
+			}
 		}
 		return trovato;
 	}
@@ -172,23 +181,25 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		if(attrezzo!=null) {
-			int i=0;
-			for(Attrezzo a : this.attrezzi) {
-				if(a!=null) {
-					if(a.getNome().equals(attrezzo.getNome())) {
-						this.attrezzi[i]=null;
-						this.numeroAttrezzi--;
-					}
-				}
-				i++;
-			}
-			return true;
-		}
-		else
+		if(attrezzo==null) 
 			return false;
+
+		int i=0;
+		for(Attrezzo a : this.attrezzi) {
+			if(a!=null) {
+				if(a.equals(attrezzo)) {
+					this.attrezzi[i]=null;
+					this.numeroAttrezzi--;
+					return true;
+				}
 				
+			}
+			i++;
+		}
+		return false;
 	}
+
+
 
 
 	public String[] getDirezioni() {
@@ -197,5 +208,31 @@ public class Stanza {
 			direzioni[i] = this.direzioni[i];
 		return direzioni;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(direzioni);
+		result = prime * result + Arrays.hashCode(stanzeAdiacenti);
+		result = prime * result + Objects.hash(nome, numeroStanzeAdiacenti);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Stanza other = (Stanza) obj;
+		return Arrays.equals(direzioni, other.direzioni) && Objects.equals(nome, other.nome)
+				&& numeroStanzeAdiacenti == other.numeroStanzeAdiacenti
+				&& Arrays.equals(stanzeAdiacenti, other.stanzeAdiacenti);
+	}
+
+
 
 }

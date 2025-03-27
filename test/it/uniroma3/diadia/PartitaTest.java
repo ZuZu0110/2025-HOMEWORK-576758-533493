@@ -3,17 +3,12 @@ package it.uniroma3.diadia;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PartitaTest {
 
-	private Partita partita;
+	private Partita partita  = new Partita();
 
-	@BeforeEach
-	public void setUp(){
-		this.partita = new Partita();
-	}
 
 	// TEST PER isFinita()
 	@Test

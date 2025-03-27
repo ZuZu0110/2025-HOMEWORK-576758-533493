@@ -35,7 +35,7 @@ public class Partita {
 		return this.giocatore;
 	}
 	
-	public void setGiocatore() {
+	public void setGiocatore(Giocatore giocatore) {
 		this.giocatore = giocatore;
 	}
 

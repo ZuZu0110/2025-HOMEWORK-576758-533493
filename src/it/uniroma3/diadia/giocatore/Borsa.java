@@ -46,8 +46,10 @@ public class Borsa {
 	
 	public int getPeso() {
 		int peso = 0;
-		for (int i= 0; i<this.numeroAttrezzi; i++)
-			peso += this.attrezzi[i].getPeso();
+		for (int i= 0; i<this.numeroAttrezzi; i++) {
+			if(this.attrezzi[i]!=null)
+				peso += this.attrezzi[i].getPeso();
+		}
 		return peso;
 	}
 	

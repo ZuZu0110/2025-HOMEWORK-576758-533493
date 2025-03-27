@@ -1,7 +1,6 @@
 package it.uniroma3.diadia;
 
 
-import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
@@ -48,7 +47,7 @@ public class DiaDia {
 
 	public void gioca() {
 		String istruzione; 
-		Scanner scannerDiLinee;
+		//Scanner scannerDiLinee;
 
 		io.mostraMessaggio(MESSAGGIO_BENVENUTO);		
 		do		
@@ -112,9 +111,7 @@ public class DiaDia {
 			int cfu = this.giocatore.getCfu();
 			this.giocatore.setCfu(cfu--);
 		}
-		io.mostraMessaggio("Stanza: ");
-		io.mostraMessaggio(partita.getLabirinto().getStanzaCorrente().getDescrizione());
-		io.mostraMessaggio("Borsa: ");
+		io.mostraMessaggio("Stanza: " + partita.getLabirinto().getStanzaCorrente().getDescrizione());
 		io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
 	}
 
