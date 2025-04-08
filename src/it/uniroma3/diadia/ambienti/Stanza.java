@@ -111,7 +111,7 @@ public class Stanza {
 		if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
 			this.attrezzi[numeroAttrezzi] = attrezzo;
 			this.numeroAttrezzi++;
-			io.mostraMessaggio(attrezzo.getNome() + " inserito nella stanza");
+			
 			return true;
 		}
 		else {

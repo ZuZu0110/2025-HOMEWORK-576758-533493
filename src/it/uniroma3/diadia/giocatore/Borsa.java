@@ -28,7 +28,6 @@ public class Borsa {
 			return false;
 		this.attrezzi[this.numeroAttrezzi] = attrezzo;
 		this.numeroAttrezzi++;
-		io.mostraMessaggio(attrezzo.getNome() + " aggiunto alla borsa");
 		return true;
 	}
 
