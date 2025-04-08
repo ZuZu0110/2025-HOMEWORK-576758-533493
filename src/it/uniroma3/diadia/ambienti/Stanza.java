@@ -2,7 +2,7 @@ package it.uniroma3.diadia.ambienti;
 import java.util.Arrays;
 import java.util.Objects;
 
-import it.uniroma3.diadia.IOConsole;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
@@ -21,13 +21,12 @@ public class Stanza {
 	static final public int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 
-	public String nome;
-	public  Attrezzo[] attrezzi;
-	public int numeroAttrezzi;   
+	private String nome;
+	private  Attrezzo[] attrezzi;
+	private int numeroAttrezzi;   
 	public Stanza[] stanzeAdiacenti;
 	public int numeroStanzeAdiacenti;
-	public String[] direzioni;
-	public IOConsole io;
+	private String[] direzioni;
 
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -40,7 +39,6 @@ public class Stanza {
 		this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
 		this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
 		this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
-		this.io = new IOConsole();
 	}
 
 	/**
