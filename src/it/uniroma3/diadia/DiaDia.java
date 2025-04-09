@@ -68,61 +68,10 @@ public class DiaDia {
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta())
 			io.mostraMessaggio("Hai vinto!");
-		//if (!this.partita.giocatoreIsVivo())
-		//System.out.println("Hai esaurito i CFU...");
+		if (!this.partita.giocatoreIsVivo())
+			io.mostraMessaggio("Hai esaurito i CFU...");
 		return this.partita.isFinita();
 	}   
-
-	// implementazioni dei comandi dell'utente:
-
-	/**
-	 * Stampa informazioni di aiuto.
-	 */
-	//	private void aiuto() {
-	//		for(int i=0; i< elencoComandi.length; i++) 
-	//			io.mostraMessaggio(elencoComandi[i]);
-	//		io.mostraMessaggio("");
-	//	}
-
-	/**
-	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
-	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
-	 */
-	//	private void vai(String direzione) {
-	//		if(direzione==null)
-	//			io.mostraMessaggio("dove vuoi andare?");
-	//		Stanza prossimaStanza = null;
-	//		prossimaStanza = this.partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(direzione);
-	//		if (prossimaStanza == null)
-	//			io.mostraMessaggio("direzione inesistente");
-	//		else {
-	//			this.partita.getLabirinto().setStanzaCorrente(prossimaStanza);
-	//			int cfu = this.giocatore.getCfu();
-	//			this.giocatore.setCfu(cfu--);
-	//		}
-	//		io.mostraMessaggio("Stanza: " + partita.getLabirinto().getStanzaCorrente().getDescrizione());
-	//		io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
-	//	}
-
-	/**
-	 * Comando "Fine".
-	 */
-	//	private void fine() {
-	//		io.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
-	//	}
-	//
-	//	public void prendi(String attrezzo) {
-	//		Borsa b = this.partita.getGiocatore().getBorsa();
-	//		Attrezzo a = this.partita.getLabirinto().getStanzaCorrente().getAttrezzo(attrezzo);
-	//		b.addAttrezzo(a);
-	//		this.partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);	
-	//	}
-	//	
-	//	public void posa(String attrezzo) {
-	//		Attrezzo a = this.partita.getGiocatore().getBorsa().getAttrezzo(attrezzo);
-	//		this.partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);
-	//		this.partita.getGiocatore().getBorsa().removeAttrezzo(attrezzo);
-	//	}
 
 	public static void main(String[] argc) {
 		IO io = new IOConsole();

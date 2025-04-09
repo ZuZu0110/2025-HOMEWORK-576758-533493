@@ -7,7 +7,6 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class StanzaBuia extends Stanza{
 
 	private String nomeAttrezzo;
-	//	private IO io = new IOConsole();
 
 	public StanzaBuia(String nome, String nomeAttrezzo) {
 		super(nome);

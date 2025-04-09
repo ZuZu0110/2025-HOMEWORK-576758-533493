@@ -15,31 +15,31 @@ public class Partita {
 	private boolean finita;
 	public Labirinto labirinto;
 	public Giocatore giocatore;
-	
+
 	public Partita(){
 		this.finita = false;
 		this.labirinto = new Labirinto();
 		this.giocatore= new Giocatore();
 		this.labirinto.creaLabirinto();
 	}
-	
+
 	public Labirinto getLabirinto() {
 		return this.labirinto;
 	}
-	
+
 	public void setLabirinto(Labirinto labirinto) {
 		this.labirinto = labirinto;
 	}
-	
+
 	public Giocatore getGiocatore() {
 		return this.giocatore;
 	}
-	
+
 	public void setGiocatore(Giocatore giocatore) {
 		this.giocatore = giocatore;
 	}
 
-	
+
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
@@ -56,6 +56,13 @@ public class Partita {
 		return finita || vinta() || (this.giocatore.cfu == 0);
 	}
 
+	public boolean giocatoreIsVivo() {
+		if(this.giocatore.getCfu()==0)
+			return false;
+		return true;
+	}
+
+
 	/**
 	 * Imposta la partita come finita
 	 *
@@ -64,5 +71,5 @@ public class Partita {
 		this.finita = true;
 	}
 
-	
+
 }

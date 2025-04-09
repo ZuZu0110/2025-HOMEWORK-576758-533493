@@ -12,17 +12,30 @@ public class ComandoPrendi implements Comando{
 	@Override
 	public void esegui(Partita partita) {
 		Borsa b = partita.getGiocatore().getBorsa();
-		Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(attrezzo);
-		b.addAttrezzo(a);
-		partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
-		io.mostraMessaggio(attrezzo + " aggiunto alla borsa");
-		
+		if(partita.getLabirinto().getStanzaCorrente().hasAttrezzo(attrezzo)) {
+			Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(attrezzo);
+			b.addAttrezzo(a);
+			partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
+			io.mostraMessaggio(attrezzo + " aggiunto alla borsa");
+		}
+		else
+			io.mostraMessaggio("attrezzo inesistente");
 	}
 
 	@Override
 	public void setParametro(String parametro) {
 		this.attrezzo = parametro;
-		
+
+	}
+
+	@Override
+	public String getNome() {
+		return "prendi";
+	}
+
+	@Override
+	public String getParametro() {
+		return this.attrezzo;
 	}
 
 }

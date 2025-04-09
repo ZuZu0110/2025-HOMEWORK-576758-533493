@@ -5,8 +5,10 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 
 public class ComandoVai implements Comando{
+	
 	private String direzione;
 	private IOConsole io = new IOConsole();
+	
 	@Override
 	public void esegui(Partita partita) {
 		Stanza stanzaCorrente = partita.getLabirinto().getStanzaCorrente();
@@ -29,6 +31,16 @@ public class ComandoVai implements Comando{
 	@Override
 	public void setParametro(String parametro) {
 		this.direzione=parametro;
+	}
+
+	@Override
+	public String getNome() {
+		return "vai";
+	}
+
+	@Override
+	public String getParametro() {
+		return this.direzione;
 	}
 
 }

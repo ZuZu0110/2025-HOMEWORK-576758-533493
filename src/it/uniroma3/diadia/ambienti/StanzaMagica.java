@@ -21,10 +21,10 @@ public class StanzaMagica extends Stanza{
 	@Override
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		this.contatoreAttrezziPosati++;
-		
+
 		if (this.contatoreAttrezziPosati>this.sogliaMagica)
 			attrezzo = this.modificaAttrezzo(attrezzo);
-		
+
 		return super.addAttrezzo(attrezzo);
 	}
 
@@ -38,4 +38,14 @@ public class StanzaMagica extends Stanza{
 		return attrezzo;
 	}
 
+
+	public String getDescrizione() {
+		StringBuilder ris = new StringBuilder();		
+		ris.append("Sei entrato in una STANZA MAGICA, questa ha poteri speciali!\n"
+				+ "Se lasci più di 2 attrezzi, modifica il nome dell'attrezzo invertendo il nome e \n"
+				+ "raddoppia il peso\n");
+		ris.append(this.toString());
+
+		return ris.toString();
+	}
 }
