@@ -4,8 +4,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class IOSimulatorTest {
 	
-	public static IOSimulator creaSimulazionePartitaEGioca(String... comandiDaLeggere) {
-		IOSimulator io = new IOSimulator(comandiDaLeggere);
+	public static IOSimulator creaSimulazionePartitaEGioca(String... comandi) {
+		IOSimulator io = new IOSimulator(comandi);
 		new DiaDia(io).gioca();
 		return io;
 	}

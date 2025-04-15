@@ -6,10 +6,11 @@ import it.uniroma3.diadia.Partita;
 
 public class ComandoNonValido implements Comando{
 
-	private IOConsole io = new IOConsole();
+	private IO io = new IOConsole();
 	
 	@Override
-	public void esegui(Partita partita) {
+	public void esegui(Partita partita,IO io) {
+		this.setIo(io);
 		io.mostraMessaggio("Comando non valido");
 		
 	}
@@ -33,6 +34,7 @@ public class ComandoNonValido implements Comando{
 	@Override
 	public void setIo(IO io) {
 		// TODO Auto-generated method stub
+		this.io=io;
 		
 	}
 

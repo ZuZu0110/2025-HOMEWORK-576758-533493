@@ -9,9 +9,10 @@ import it.uniroma3.diadia.giocatore.Borsa;
 public class ComandoPrendi implements Comando{
 
 	private String attrezzo;
-	private IOConsole io = new IOConsole();
+	private IO io;
 	@Override
-	public void esegui(Partita partita) {
+	public void esegui(Partita partita,IO io) {
+		this.setIo(io);
 		Borsa b = partita.getGiocatore().getBorsa();
 		if(partita.getLabirinto().getStanzaCorrente().hasAttrezzo(attrezzo)) {
 			Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(attrezzo);
@@ -42,6 +43,7 @@ public class ComandoPrendi implements Comando{
 	@Override
 	public void setIo(IO io) {
 		// TODO Auto-generated method stub
+		this.io=io;
 		
 	}
 

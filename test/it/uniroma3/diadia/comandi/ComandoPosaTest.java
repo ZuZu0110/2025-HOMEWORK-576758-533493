@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -16,12 +17,13 @@ public class ComandoPosaTest {
 	Attrezzo a = new Attrezzo("a",1);
 	Comando posa = new ComandoPosa();
 	Partita p = new Partita();
+
 	
 	@Test
 	public void eseguiAttrezzoNonPresenteTest() {
 		p.getLabirinto().setStanzaCorrente(stanza);
 		posa.setParametro(null);
-		posa.esegui(p);
+		posa.esegui(p,new IOConsole());
 		assertEquals(null, posa.getParametro());
 	}
 	
@@ -30,7 +32,7 @@ public class ComandoPosaTest {
 		p.getLabirinto().setStanzaCorrente(stanza);
 		p.getGiocatore().getBorsa().addAttrezzo(a);
 		posa.setParametro(a.getNome());
-		posa.esegui(p);
+		posa.esegui(p,new IOConsole());
 		assertTrue(p.getLabirinto().getStanzaCorrente().hasAttrezzo(a.getNome()));
 		assertFalse(p.getGiocatore().getBorsa().hasAttrezzo(a.getNome()));
 	}

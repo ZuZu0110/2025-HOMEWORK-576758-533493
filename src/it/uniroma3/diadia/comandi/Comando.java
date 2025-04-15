@@ -17,7 +17,7 @@ import it.uniroma3.diadia.Partita;
 
 public interface Comando {
 
-	public void esegui(Partita partita);
+	public void esegui(Partita partita,IO io);
 	public void setParametro(String parametro);
 
 	public String getNome();

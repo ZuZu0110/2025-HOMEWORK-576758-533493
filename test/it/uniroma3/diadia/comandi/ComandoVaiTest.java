@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.DiaDia;
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.IOSimulator;
 import it.uniroma3.diadia.IOSimulatorTest;
@@ -20,14 +21,7 @@ public class ComandoVaiTest {
 	Stanza stanza1 = new Stanza("stanza1");
 	Comando vai = new ComandoVai();
 	Partita partita = new Partita();
-
-
-
-
-	@Before
-	public void setUp() {
-		vai.setIo(new IOConsole());
-	}
+	private IO io= new IOConsole();
 
 
 	@Test
@@ -40,7 +34,7 @@ public class ComandoVaiTest {
 		partita.getLabirinto().setStanzaCorrente(stanza);
 		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente("sud", stanza1);
 		vai.setParametro("sud");
-		vai.esegui(partita);
+		vai.esegui(partita,io);
 		assertEquals(stanza1,partita.getLabirinto().getStanzaCorrente());
 	}
 
@@ -49,22 +43,22 @@ public class ComandoVaiTest {
 		partita.getLabirinto().setStanzaCorrente(stanza);
 		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente("sud", stanza1);
 		vai.setParametro("nord");
-		vai.esegui(partita);
+		vai.esegui(partita,io);
 		assertEquals(stanza,partita.getLabirinto().getStanzaCorrente());
 	}
 
 	@Test
 	public void comandoVaiTest() {
 		String[] righeDaLeggere = {"vai sud","fine"};
+
 		IOSimulator io = IOSimulatorTest.creaSimulazionePartitaEGioca(righeDaLeggere);
 
-		
+
 		assertTrue(io.hasNextMessaggio());
 		assertEquals(DiaDia.MESSAGGIO_BENVENUTO, io.nextMessaggio());
 
 		assertTrue(io.hasNextMessaggio());
 		assertEquals("Aula N10", io.nextMessaggio());
-
 
 		assertTrue(io.hasNextMessaggio());
 		assertEquals("Grazie di aver giocato!", io.nextMessaggio());

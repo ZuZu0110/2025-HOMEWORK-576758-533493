@@ -6,10 +6,11 @@ import it.uniroma3.diadia.Partita;
 
 public class ComandoGuarda implements Comando{
 
-	private IOConsole io = new IOConsole();
+	private IO io = new IOConsole();
 	
 	@Override
-	public void esegui(Partita partita) {
+	public void esegui(Partita partita,IO io) {
+		this.setIo(io);
 		io.mostraMessaggio(partita.getLabirinto().getStanzaCorrente().getDescrizione());
 		io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
 		io.mostraMessaggio(partita.getGiocatore().toString());
@@ -37,6 +38,7 @@ public class ComandoGuarda implements Comando{
 	@Override
 	public void setIo(IO io) {
 		// TODO Auto-generated method stub
+		this.io=io;
 		
 	}
 
