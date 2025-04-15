@@ -7,11 +7,12 @@ public class IOSimulator implements IO{
 	private String[] messaggiProdotti;
 	private int indiceMessaggiProdotti;
 	private int indiceMessaggiMostrati;
-	
+
 	public IOSimulator(String[] righeDaLeggere) {
 		this.righeLette = righeDaLeggere;
 		this.indiceRigheLette = 0;
 		this.indiceMessaggiMostrati = 0;
+		this.indiceMessaggiProdotti = 0;
 		this.messaggiProdotti = new String[42*23];
 	}
 
@@ -34,23 +35,23 @@ public class IOSimulator implements IO{
 	}
 
 	@Override
-	public void mostraMessaggio(String msg) {
-		this.messaggiProdotti[indiceMessaggiProdotti] = msg;
+	public void mostraMessaggio(String messaggio) {
+		this.messaggiProdotti[indiceMessaggiProdotti] = messaggio;
+		//System.out.println(this.messaggiProdotti[indiceMessaggiProdotti]);
 		this.indiceMessaggiProdotti++;
 	}
 
-	//	public String[] getRigheMostrate() {
-	//		return righeMostrate;
-	//	}
-
 	public String nextMessaggio() {
-		String next = this.messaggiProdotti[this.indiceMessaggiMostrati];
+		String next;
+
+		next=this.messaggiProdotti[this.indiceMessaggiMostrati];
 		this.indiceMessaggiMostrati++;
+
 		return next;
 	}
 
 	public boolean hasNextMessaggio() {
-		return this.indiceMessaggiMostrati < this.indiceMessaggiProdotti;
+		return this.indiceMessaggiMostrati <= this.indiceMessaggiProdotti;
 	}
 
 }

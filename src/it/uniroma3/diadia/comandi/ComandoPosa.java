@@ -1,5 +1,6 @@
 package it.uniroma3.diadia.comandi;
 
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -33,6 +34,12 @@ public class ComandoPosa implements Comando{
 	public String getParametro() {
 		// TODO Auto-generated method stub
 		return this.attrezzo;
+	}
+
+	@Override
+	public void setIo(IO io) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
