@@ -109,7 +109,7 @@ public class Stanza {
 		if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
 			this.attrezzi[numeroAttrezzi] = attrezzo;
 			this.numeroAttrezzi++;
-			
+
 			return true;
 		}
 		else {
@@ -190,14 +190,25 @@ public class Stanza {
 					this.numeroAttrezzi--;
 					return true;
 				}
-				
+
 			}
 			i++;
 		}
 		return false;
 	}
 
-
+	// METODO CHE CERCA L'INDICE DELL'ATTREZZO CHE DOBBIAMO RINOMINARE CORRETTAMENTE
+	public int cercaAttrezzo(String nomeAttrezzo) {
+		int n=0;
+		if(nomeAttrezzo!=null)
+			for(int i=0;i<this.attrezzi.length;i++) {
+				if(this.attrezzi[i]!=null)
+					if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
+						n=i;
+					}
+			}
+		return n;
+	}
 
 
 	public String[] getDirezioni() {

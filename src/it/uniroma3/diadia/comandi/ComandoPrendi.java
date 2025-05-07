@@ -1,8 +1,9 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.IO;
-import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.ambienti.StanzaMagica;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
@@ -10,18 +11,32 @@ public class ComandoPrendi implements Comando{
 
 	private String attrezzo;
 	private IO io;
+	
 	@Override
 	public void esegui(Partita partita,IO io) {
 		this.setIo(io);
 		Borsa b = partita.getGiocatore().getBorsa();
-		if(partita.getLabirinto().getStanzaCorrente().hasAttrezzo(attrezzo)) {
-			Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(attrezzo);
-			b.addAttrezzo(a);
-			partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
-			io.mostraMessaggio(attrezzo + " aggiunto alla borsa");
+		Stanza stanzaCorr = partita.getLabirinto().getStanzaCorrente();
+		if(stanzaCorr.hasAttrezzo(attrezzo)) {
+			Attrezzo a = stanzaCorr.getAttrezzo(attrezzo);
+			
+			if(stanzaCorr instanceof StanzaMagica && stanzaCorr.cercaAttrezzo(attrezzo)>1) {
+				Attrezzo c=stanzaCorr.getAttrezzo(attrezzo);
+				StringBuilder nomeO = new StringBuilder(c.getNome());
+				nomeO = nomeO.reverse();
+				int pesoO = c.getPeso()/2;
+				a = new Attrezzo(nomeO.toString(),pesoO);
+			}
+			if(b.addAttrezzo(a)) {
+				stanzaCorr.removeAttrezzo(stanzaCorr.getAttrezzo(attrezzo));
+				io.mostraMessaggio(attrezzo + " aggiunto alla borsa");
+			}
+			else
+				io.mostraMessaggio("borsa piena");
 		}
 		else
-			io.mostraMessaggio("attrezzo inesistente");
+			io.mostraMessaggio("atrezzo inesistente");
+		
 	}
 
 	@Override
