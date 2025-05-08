@@ -23,7 +23,7 @@ public class Stanza {
 
 	private String nome;
 	private  Attrezzo[] attrezzi;
-	private int numeroAttrezzi;   
+	public int numeroAttrezzi;   
 	public Stanza[] stanzeAdiacenti;
 	public int numeroStanzeAdiacenti;
 	private String[] direzioni;
@@ -80,6 +80,10 @@ public class Stanza {
 	 */
 	public String getNome() {
 		return this.nome;
+	}
+	
+	public int getNumeroAttrezzi() {
+		return this.numeroAttrezzi;
 	}
 
 	/**
@@ -187,6 +191,9 @@ public class Stanza {
 			if(a!=null) {
 				if(a.equals(attrezzo)) {
 					this.attrezzi[i]=null;
+					for(int j=i;j<this.attrezzi.length-1;j++) {
+						this.attrezzi[j]=this.attrezzi[j+1];
+					}
 					this.numeroAttrezzi--;
 					return true;
 				}

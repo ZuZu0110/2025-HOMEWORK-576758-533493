@@ -4,7 +4,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaMagica extends Stanza{
 
-	final static private int SOGLIA_MAGICA_DEFAULT = 2;
+	final static private int SOGLIA_MAGICA_DEFAULT = 3;
 	private int contatoreAttrezziPosati;
 	private int sogliaMagica;
 
@@ -18,6 +18,9 @@ public class StanzaMagica extends Stanza{
 		this.sogliaMagica = soglia;
 	}
 
+	public int getSoglia() {
+		return this.sogliaMagica;
+	}
 	@Override
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		this.contatoreAttrezziPosati++;
