@@ -16,6 +16,7 @@ public class Labirinto {
 		Attrezzo sasso = new Attrezzo("sasso", 7);
 		Attrezzo libro = new Attrezzo("libro", 1);
 		Attrezzo pc = new Attrezzo("pc", 2);
+		Attrezzo biglietto = new Attrezzo("biglietto",1);
     	
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
@@ -24,7 +25,7 @@ public class Labirinto {
 		Stanza laboratorio = new Stanza("Laboratorio Campus");
 		Stanza biblioteca = new Stanza("Biblioteca");
 		Stanza N3 = new StanzaBuia("Aula N3","torcia");
-		Stanza N14 = new StanzaBloccata("Aula N14","nord","piedediporco");
+		Stanza N14 = new StanzaBloccata("Aula N14","nord","biglietto");
 		Stanza N8 = new StanzaMagica("Aula N8");
 		
 		
@@ -56,9 +57,11 @@ public class Labirinto {
 		atrio.addAttrezzo(osso);
 		aulaN11.addAttrezzo(torcia);
 		N3.addAttrezzo(piedeDiPorco);
+		N3.addAttrezzo(biglietto);
 		N8.addAttrezzo(sasso);
 		N8.addAttrezzo(libro);
 		N8.addAttrezzo(pc);
+		
 		
 
 		// il gioco comincia nell'atrio

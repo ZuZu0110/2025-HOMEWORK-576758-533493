@@ -18,11 +18,8 @@ public class StanzaBuia extends Stanza{
 		for(Attrezzo a : this.getAttrezzi()) {
 			if(a!=null) {
 				if(a.getNome().equals(this.nomeAttrezzo))
-					return this.toString();
-				
+					return this.toString();	
 			}
-			
-
 		}
 		return "Qui c'è buio pesto";
 	}

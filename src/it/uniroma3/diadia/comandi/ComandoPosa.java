@@ -16,7 +16,7 @@ public class ComandoPosa implements Comando{
 		if(partita.getGiocatore().getBorsa().hasAttrezzo(attrezzo)) {
 			partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);
 			partita.getGiocatore().getBorsa().removeAttrezzo(attrezzo);
-			io.mostraMessaggio(attrezzo+ " inserito nella stanza");
+			io.mostraMessaggio("Attrezzo "+attrezzo+ " inserito nella stanza");
 		}
 		else
 			io.mostraMessaggio("attrezzo non presente");

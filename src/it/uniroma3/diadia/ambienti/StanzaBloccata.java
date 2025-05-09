@@ -1,11 +1,15 @@
 package it.uniroma3.diadia.ambienti;
 
+import java.util.Random;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaBloccata extends Stanza{
 
 	private String direzioneBloccata;
 	private String attrezzoSbloccante;
+	Random rand = new Random();
+	int codice = rand.nextInt(9000)+1000;
 
 	public StanzaBloccata(String nome, String direzioneBloccata, String attrezzoSbloccante) {
 		super(nome);
@@ -37,14 +41,34 @@ public class StanzaBloccata extends Stanza{
 		return stanza;
 
 	}
+	
+	public int getCodice() {
+		return this.codice;
+	}
+	
+	public String getAttrezzoSbloccante() {
+		return this.attrezzoSbloccante;
+	}
+	
+	public String getDirezioneBloccata() {
+		return this.direzioneBloccata;
+	}
 
 
 	@Override
 	public String getDescrizione() {
-		StringBuilder ris = new StringBuilder();		
+		StringBuilder ris = new StringBuilder();	
+		ris.append("Sei entrato in una STANZA BLOCCATA, sembra che una direzione sia bloccata.\nTrova un modo per sbloccarla.\n");
 		ris.append(this.toString());
-		ris.append("\nAttrezzo sbloccante: "+this.attrezzoSbloccante);
-		ris.append("\nDirezione bloccata: "+this.direzioneBloccata);
+		if(this.hasAttrezzo(attrezzoSbloccante)) {
+			ris.append("\nCodice della stanza: "+this.codice+"\nCodice del biglietto: "+this.codice);
+			ris.append("\nCodici uguali ,direzione nord sbloccata");
+		}
+		else {
+			ris.append("\nAttrezzo sbloccante: ?");
+			ris.append("\nDirezione bloccata: "+this.direzioneBloccata);
+		}
+		
 		return ris.toString();
 	}
 }

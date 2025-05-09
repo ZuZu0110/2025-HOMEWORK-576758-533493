@@ -37,7 +37,7 @@ public class ComandoPrendi implements Comando{
 					int pesoO = v.getPeso()/2;
 					stanzaCorr.getAttrezzi()[((StanzaMagica) stanzaCorr).getSoglia()-1] = new Attrezzo(nomeO.toString(),pesoO);
 				}
-				io.mostraMessaggio(attrezzo + " aggiunto alla borsa");
+				io.mostraMessaggio("Attrezzo "+attrezzo + " aggiunto alla borsa");
 			}
 			else
 				io.mostraMessaggio("borsa piena");
