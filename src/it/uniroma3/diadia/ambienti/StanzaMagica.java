@@ -25,7 +25,7 @@ public class StanzaMagica extends Stanza{
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		this.contatoreAttrezziPosati++;
 
-		if (this.contatoreAttrezziPosati>this.sogliaMagica)
+		if (attrezzo!=null && this.contatoreAttrezziPosati>this.sogliaMagica)
 			attrezzo = this.modificaAttrezzo(attrezzo);
 
 		return super.addAttrezzo(attrezzo);
@@ -33,14 +33,17 @@ public class StanzaMagica extends Stanza{
 
 	private Attrezzo modificaAttrezzo(Attrezzo attrezzo) {
 		StringBuilder nomeInvertito;
+
 		int pesoX2 = attrezzo.getPeso() * 2;
-		nomeInvertito = new StringBuilder(attrezzo.getNome());
-		nomeInvertito = nomeInvertito.reverse();
-		attrezzo = new Attrezzo(nomeInvertito.toString(),
-				pesoX2);
+		if(attrezzo!=null) {
+			nomeInvertito = new StringBuilder(attrezzo.getNome());
+			nomeInvertito = nomeInvertito.reverse();
+			attrezzo = new Attrezzo(nomeInvertito.toString(),
+					pesoX2);
+		}
 		return attrezzo;
 	}
-	
+
 
 	public String getDescrizione() {
 		StringBuilder ris = new StringBuilder();		

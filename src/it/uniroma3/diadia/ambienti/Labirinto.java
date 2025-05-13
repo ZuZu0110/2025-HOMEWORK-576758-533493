@@ -59,8 +59,11 @@ public class Labirinto {
 		N3.addAttrezzo(piedeDiPorco);
 		N3.addAttrezzo(biglietto);
 		N8.addAttrezzo(sasso);
+		
 		N8.addAttrezzo(libro);
+		
 		N8.addAttrezzo(pc);
+		
 		
 		
 

@@ -15,12 +15,16 @@ public class StanzaBuia extends Stanza{
 
 	@Override
 	public String getDescrizione() {
+		StringBuilder ris = new StringBuilder();
 		for(Attrezzo a : this.getAttrezzi()) {
 			if(a!=null) {
-				if(a.getNome().equals(this.nomeAttrezzo))
-					return this.toString();	
+				if(a.getNome().equals(this.nomeAttrezzo)) {
+					ris.append("Adesso puoi vedere...\n");
+					ris.append(this.toString());
+					return ris.toString();	
+				}
 			}
 		}
-		return "Qui c'è buio pesto";
+		return ris.append("Qui c'è buio pesto").toString();
 	}
 }

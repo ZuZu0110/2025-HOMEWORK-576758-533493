@@ -58,7 +58,7 @@ public class StanzaBloccata extends Stanza{
 	@Override
 	public String getDescrizione() {
 		StringBuilder ris = new StringBuilder();	
-		ris.append("Sei entrato in una STANZA BLOCCATA, sembra che una direzione sia bloccata.\nTrova un modo per sbloccarla.\n");
+		ris.append("Sei entrato in una STANZA BLOCCATA, sembra che una direzione sia bloccata.\nSembra tu abbia bisogno di un codice.\n");
 		ris.append(this.toString());
 		if(this.hasAttrezzo(attrezzoSbloccante)) {
 			ris.append("\nCodice della stanza: "+this.codice+"\nCodice del biglietto: "+this.codice);

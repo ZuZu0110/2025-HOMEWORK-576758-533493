@@ -1,7 +1,8 @@
 package it.uniroma3.diadia.ambienti;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
-
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -22,7 +23,7 @@ public class Stanza {
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 
 	private String nome;
-	private  Attrezzo[] attrezzi;
+	private  List<Attrezzo> attrezzi;
 	public int numeroAttrezzi;   
 	public Stanza[] stanzeAdiacenti;
 	public int numeroStanzeAdiacenti;
@@ -38,7 +39,7 @@ public class Stanza {
 		this.numeroAttrezzi = 0;
 		this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
 		this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
-		this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+		this.attrezzi = new ArrayList<Attrezzo>();
 	}
 
 	/**
@@ -81,7 +82,7 @@ public class Stanza {
 	public String getNome() {
 		return this.nome;
 	}
-	
+
 	public int getNumeroAttrezzi() {
 		return this.numeroAttrezzi;
 	}
@@ -98,7 +99,7 @@ public class Stanza {
 	 * Restituisce la collezione di attrezzi presenti nella stanza.
 	 * @return la collezione di attrezzi nella stanza.
 	 */
-	public Attrezzo[] getAttrezzi() {
+	public List<Attrezzo> getAttrezzi() {
 		return this.attrezzi;
 	}
 
@@ -110,10 +111,11 @@ public class Stanza {
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		if(attrezzo==null)
 			return false;
+		if(this.attrezzi.contains(attrezzo))
+			return false;
 		if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
-			this.attrezzi[numeroAttrezzi] = attrezzo;
+			this.attrezzi.add(attrezzo);
 			this.numeroAttrezzi++;
-
 			return true;
 		}
 		else {
@@ -190,9 +192,11 @@ public class Stanza {
 		for(Attrezzo a : this.attrezzi) {
 			if(a!=null) {
 				if(a.equals(attrezzo)) {
-					this.attrezzi[i]=null;
-					for(int j=i;j<this.attrezzi.length-1;j++) {
-						this.attrezzi[j]=this.attrezzi[j+1];
+					this.attrezzi.remove(a);
+
+					for(int j=i;j<this.attrezzi.size()-1;j++) {
+						if(this.attrezzi.get(j)!=null)
+							this.attrezzi.add(j, this.attrezzi.get(j+1));
 					}
 					this.numeroAttrezzi--;
 					return true;
@@ -206,13 +210,15 @@ public class Stanza {
 
 	// METODO CHE CERCA L'INDICE DELL'ATTREZZO CHE DOBBIAMO RINOMINARE CORRETTAMENTE
 	public int cercaAttrezzo(String nomeAttrezzo) {
+		int i=0;
 		int n=0;
 		if(nomeAttrezzo!=null)
-			for(int i=0;i<this.attrezzi.length;i++) {
-				if(this.attrezzi[i]!=null)
-					if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
+			for(Attrezzo a : this.attrezzi) {
+				if(a!=null)
+					if(a.getNome().equals(nomeAttrezzo)) {
 						n=i;
 					}
+				i++;
 			}
 		return n;
 	}

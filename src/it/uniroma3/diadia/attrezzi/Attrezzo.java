@@ -35,6 +35,10 @@ public class Attrezzo {
 	public String getNome() {
 		return this.nome;
 	}
+	
+	public void setNome(String nome) {
+		this.nome=nome;
+	}
 
 	/**
 	 * Restituisce il peso dell'attrezzo
@@ -42,6 +46,10 @@ public class Attrezzo {
 	 */
 	public int getPeso() {
 		return this.peso;
+	}
+	
+	public void setPeso(int peso) {
+		this.peso=peso;
 	}
 
 	/**
@@ -69,11 +77,12 @@ public class Attrezzo {
 		return Objects.equals(nome, other.nome) && peso == other.peso;
 	}
 	
-//	public boolean equals(Object o) {
-//		Attrezzo that = (Attrezzo) o;
-//		return this.nome.equals(that.getNome()) && this.peso==that.getPeso();
-//	}
 	
+	public int compareTo(Attrezzo o) {
+		if(this.getPeso()-o.getPeso()==0)
+			return this.getNome().hashCode()-o.getNome().hashCode();
+		return this.getPeso()-o.getPeso();
+	}
 	
 
 
