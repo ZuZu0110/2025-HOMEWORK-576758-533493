@@ -22,6 +22,12 @@ public class Partita {
 		this.giocatore= new Giocatore();
 		this.labirinto.creaLabirinto();
 	}
+	public Partita(Labirinto lab){
+		this.finita = false;
+		this.labirinto = new Labirinto();
+		this.giocatore= new Giocatore();
+		this.labirinto=lab;
+	}
 
 	public Labirinto getLabirinto() {
 		return this.labirinto;
