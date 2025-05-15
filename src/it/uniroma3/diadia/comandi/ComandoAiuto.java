@@ -4,9 +4,9 @@ import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 
-public class ComandoAiuto implements Comando{
+public class ComandoAiuto extends AbstractComando{
 
-	static final public String[] elencoComandi = {"vai", "aiuto", "prendi", "posa", "fine","guarda"};
+	static final public String[] elencoComandi = {"vai", "aiuto", "prendi", "posa", "fine","guarda","saluta","interagisci"};
 	private IO io = new IOConsole();
 	@Override
 	public void esegui(Partita partita,IO io) {
@@ -18,10 +18,6 @@ public class ComandoAiuto implements Comando{
 		
 	}
 
-	@Override
-	public void setParametro(String parametro) {
-		
-	}
 
 	@Override
 	public String getNome() {
@@ -29,13 +25,6 @@ public class ComandoAiuto implements Comando{
 		return "aiuto";
 	}
 
-	@Override
-	public String getParametro() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void setIo(IO io) {
 		// TODO Auto-generated method stub
 		this.io=io;

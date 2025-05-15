@@ -7,7 +7,7 @@ import it.uniroma3.diadia.ambienti.StanzaMagica;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
-public class ComandoPrendi implements Comando{
+public class ComandoPrendi extends AbstractComando{
 
 	private String attrezzo;
 	private IO io;

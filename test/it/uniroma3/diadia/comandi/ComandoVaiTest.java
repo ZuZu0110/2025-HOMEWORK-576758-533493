@@ -1,10 +1,11 @@
 package it.uniroma3.diadia.comandi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Before;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.DiaDia;
@@ -49,7 +50,9 @@ public class ComandoVaiTest {
 
 	@Test
 	public void comandoVaiTest() {
-		String[] righeDaLeggere = {"vai sud","fine"};
+		List<String> righeDaLeggere = new ArrayList<>();
+		righeDaLeggere.add("vai nord");
+		righeDaLeggere.add("fine");
 
 		IOSimulator io = IOSimulatorTest.creaSimulazionePartitaEGioca(righeDaLeggere);
 

@@ -1,5 +1,8 @@
 package it.uniroma3.diadia.ambienti;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.giocatore.Cane;
+import it.uniroma3.diadia.giocatore.Mago;
+import it.uniroma3.diadia.giocatore.Strega;
 
 public class Labirinto {
 	
@@ -18,6 +21,7 @@ public class Labirinto {
 		Attrezzo libro = new Attrezzo("libro", 1);
 		Attrezzo pc = new Attrezzo("pc", 2);
 		Attrezzo biglietto = new Attrezzo("biglietto",1);
+		Attrezzo bacchetta = new Attrezzo("bacchetta",1);
     	
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
@@ -29,6 +33,10 @@ public class Labirinto {
 		Stanza N14 = new StanzaBloccata("Aula N14","nord","biglietto");
 		Stanza N8 = new StanzaMagica("Aula N8");
 		
+		/* crea personaggi*/
+		Strega strega = new Strega("Sabrina","Sono una strega che abita questo labirinto ");
+		Mago mago = new Mago("Mago Merlino","Sono un antico e potente mago ",bacchetta);
+		Cane cane = new Cane("Scooby Doo","BAU BAU");
 		
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", N14);
@@ -59,14 +67,14 @@ public class Labirinto {
 		aulaN11.addAttrezzo(torcia);
 		N3.addAttrezzo(piedeDiPorco);
 		N3.addAttrezzo(biglietto);
-		N8.addAttrezzo(sasso);
-		
-		N8.addAttrezzo(libro);
-		
+		N8.addAttrezzo(sasso);	
+		N8.addAttrezzo(libro);		
 		N8.addAttrezzo(pc);
 		
 		
-		
+		laboratorio.setPersonaggio(mago);
+		atrio.setPersonaggio(cane);
+		N3.setPersonaggio(strega);
 
 		// il gioco comincia nell'atrio
         stanzaCorrente = atrio;

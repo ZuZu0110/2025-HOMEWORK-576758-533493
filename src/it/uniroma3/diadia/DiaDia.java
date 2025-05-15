@@ -89,7 +89,7 @@ public class DiaDia {
 				.addStanzaVincente("Biblioteca")
 				.adAdiacenza("LabCampusOne", "Biblioteca", "ovest")
 				.getLabirinto();
-		DiaDia gioco = new DiaDia(lab,io);
+		DiaDia gioco = new DiaDia(io);
 		gioco.gioca();
 	}
 }
