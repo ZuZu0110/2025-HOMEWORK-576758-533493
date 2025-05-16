@@ -22,6 +22,7 @@ public class Labirinto {
 		Attrezzo pc = new Attrezzo("pc", 2);
 		Attrezzo biglietto = new Attrezzo("biglietto",1);
 		Attrezzo bacchetta = new Attrezzo("bacchetta",1);
+		Attrezzo chiave = new Attrezzo("chiave",1);
     	
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
@@ -36,7 +37,7 @@ public class Labirinto {
 		/* crea personaggi*/
 		Strega strega = new Strega("Sabrina","Sono una strega che abita questo labirinto ");
 		Mago mago = new Mago("Mago Merlino","Sono un antico e potente mago ",bacchetta);
-		Cane cane = new Cane("Scooby Doo","BAU BAU");
+		Cane cane = new Cane("Scooby Doo","BAU BAU",chiave);
 		
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", N14);

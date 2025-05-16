@@ -41,6 +41,7 @@ public class Stanza {
 		this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
 		this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
 		this.attrezzi = new ArrayList<Attrezzo>();
+		this.pers=null;
 		
 	}
 
@@ -149,8 +150,8 @@ public class Stanza {
 			if(attrezzo!=null)
 				risultato.append(attrezzo.toString()+" ");
 		}
-		if(this.pers!=null)
-			risultato.append("\n"+this.pers.toString());
+		if(this.getPersonaggio()!=null)
+			risultato.append("\n"+this.getPersonaggio().toString());
 		return risultato.toString();
 	}
 

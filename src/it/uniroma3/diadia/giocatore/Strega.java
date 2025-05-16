@@ -1,43 +1,53 @@
 package it.uniroma3.diadia.giocatore;
 
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Strega extends AbstractPersonaggio{
 
 	private static final String MESSAGGIO_STREGA="VIA DA QUA! ";
+	Attrezzo att;
 	
 	public Strega(String nome,String pres) {
 		super(nome,pres);
 	}
 	
 	@Override
-	public String agisci(Partita partita) {
-		// TODO Auto-generated method stub
+	public String agisci(Partita partita) {	
 		String msg=MESSAGGIO_STREGA;
+		Stanza stanzaCorrente = partita.getLabirinto().getStanzaCorrente();
 		if(haSalutato()) {
 			int max=0;
 			String dir=null;
-			for(String d :partita.getLabirinto().getStanzaCorrente().getDirezioni()) {
-				if(max<partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(d).getNumeroAttrezzi()) {
-					max=partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(d).getNumeroAttrezzi();
+			for(String d :stanzaCorrente.getDirezioni()) {
+				if(max<stanzaCorrente.getStanzaAdiacente(d).getNumeroAttrezzi()) {
+					max=stanzaCorrente.getStanzaAdiacente(d).getNumeroAttrezzi();
 					dir=d;
 				}
 			}
 			if(dir!=null)
-				partita.getLabirinto().setStanzaCorrente(partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(dir));
+				partita.getLabirinto().setStanzaCorrente(stanzaCorrente.getStanzaAdiacente(dir));
 		}
 		else {
-			int min=partita.getLabirinto().getStanzaCorrente().getNumeroAttrezzi();
+			int min=Integer.MAX_VALUE;
 			String dir=null;
-			for(String d :partita.getLabirinto().getStanzaCorrente().getDirezioni()) {
-				if(min>partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(d).getNumeroAttrezzi()) {
-					min=partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(d).getNumeroAttrezzi();
+			for(String d :stanzaCorrente.getDirezioni()) {
+				if(min>stanzaCorrente.getStanzaAdiacente(d).getNumeroAttrezzi()) {
+					min=stanzaCorrente.getStanzaAdiacente(d).getNumeroAttrezzi();
 					dir=d;
 				}
 			}
 			if(dir!=null)
-				partita.getLabirinto().setStanzaCorrente(partita.getLabirinto().getStanzaCorrente().getStanzaAdiacente(dir));
+				partita.getLabirinto().setStanzaCorrente(stanzaCorrente.getStanzaAdiacente(dir));
 		}
+		return msg;
+	}
+
+	@Override
+	public String riceviRegalo(Attrezzo att, Partita partita) {
+		String msg="HIHIHI! ";
+		this.setAttrezzo(att);
 		return msg;
 	}
 

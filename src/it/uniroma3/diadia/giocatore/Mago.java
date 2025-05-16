@@ -14,9 +14,9 @@ public class Mago extends AbstractPersonaggio{
 		super(nome,pres);
 		this.att=att;
 	}
+	
 	@Override
 	public String agisci(Partita partita) {
-		// TODO Auto-generated method stub
 		String msg;
 		if(this.att!=null) {
 			partita.getLabirinto().getStanzaCorrente().addAttrezzo(this.att);
@@ -25,6 +25,14 @@ public class Mago extends AbstractPersonaggio{
 		}
 		else 
 			msg=MESSAGGIO_SCUSE;
+		return msg;
+	}
+	
+	@Override
+	public String riceviRegalo(Attrezzo att, Partita partita) {
+		String msg="Ti ho alleggerito la vita ";
+		att.setPeso(att.getPeso()/2);
+		partita.getLabirinto().getStanzaCorrente().addAttrezzo(att);
 		return msg;
 	}
 	
