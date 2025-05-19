@@ -1,5 +1,29 @@
-Stanze: Atrio Biblioteca
+Stanze: Atrio, Biblioteca, AulaN11, AulaN10, Laboratorio 
+StanzaBloccata: AulaN14 nord biglietto
+StanzaBuia: AulaN3 torcia
+StanzaMagica: AulaN8 3
 Inizio: Atrio
 Vincente: Biblioteca
-Attrezzi: Osso 1 Atrio
-Adiacenze: Atrio Biblioteca nord, Biblioteca Atrio sud
+Attrezzi: Osso 1 Atrio, Lanterna 1 AulaN10, Torcia 1 AulaN11, PiedeDiPorco 1 AulaN3, Sasso 1 AulaN8, Biglietto 1 AulaN3 
+Adiacenze: 
+Atrio AulaN14 nord
+Atrio AulaN11 est 
+Atrio AulaN10 ovest 
+Atrio Laboratorio sud
+AulaN11 Laboratorio est
+AulaN11 Atrio ovest
+AulaN10 Atrio nord 
+AulaN10 AulaN11 est
+AulaN10 Laboratorio ovest 
+AulaN10 AulaN8 sud
+Laboratorio Atrio est 
+Laboratorio AulaN11 ovest
+Laboratorio AulaN3 nord
+AulaN3 Laboratorio sud 
+AulaN3 AulaN14 est
+AulaN8 AulaN10 nord
+AulaN14 Atrio sud
+AulaN14 Biblioteca nord 
+AulaN14 AulaN3 ovest
+Biblioteca Atrio sud
+Personaggi: Mago Merlino "Sono-un-mago" Bacchetta AulaN11, Cane Scooby "BAU" Chiave Atrio, Strega Sabrina "Sono-una-strega" 3 AulaN10
