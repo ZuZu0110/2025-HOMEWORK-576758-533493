@@ -10,15 +10,13 @@ public class LabirintoBuilder extends Labirinto{
 	public Stanza iniziale;// Stanza iniziale del labirinto
     public Stanza corrente; // La stanza attualmente in focus per modifiche (es. aggiungere attrezzi)
     public Stanza finale;   // Stanza vincente del labirinto
-	public Labirinto lab;  // Labirinto
+//	public Labirinto lab;  // Labirinto
 
 	//mappa che tine traccia delle stanza inserite
 	public Map<String, Stanza> stanze;
 
-	public LabirintoBuilder(){
-		this.lab=new Labirinto();
-		this.stanze = new HashMap<>();
-		
+	public LabirintoBuilder(){	
+		this.stanze = new HashMap<>();		
 	}
 
 	/**
@@ -32,7 +30,7 @@ public class LabirintoBuilder extends Labirinto{
 		this.iniziale = s;
 		this.corrente = s;
 		this.stanze.put(iniziale, s);
-		this.lab.setStanzaCorrente(this.corrente);
+		this.setStanzaCorrente(this.corrente);
 		return this;
 	}
 	/**
@@ -44,8 +42,8 @@ public class LabirintoBuilder extends Labirinto{
 		Stanza s= new Stanza(stanza);
 		this.corrente=s;
 		this.stanze.put(stanza, s);
-		this.lab.setIniziale(iniziale);
-		this.lab.setStanzaCorrente(this.corrente);
+		this.setIniziale(iniziale);
+		this.setStanzaCorrente(this.corrente);
 		return this;
 	}
 
@@ -59,7 +57,7 @@ public class LabirintoBuilder extends Labirinto{
 		this.finale= s;
 		this.corrente=s;
 		this.stanze.put(vincente, s);
-		this.lab.setStanzaVincente(this.finale);
+		this.setStanzaVincente(this.finale);
 		return this;
 	}
 
@@ -97,6 +95,6 @@ public class LabirintoBuilder extends Labirinto{
 	 * @return riferimento all'oggetto labirinto nella classe
 	 */
 	public Labirinto getLabirinto(){
-		return this.lab;
+		return this;
 	}
 }

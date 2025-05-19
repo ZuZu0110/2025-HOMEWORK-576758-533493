@@ -1,0 +1,5 @@
+Stanze: Atrio Biblioteca
+Inizio: Atrio
+Vincente: Biblioteca
+Attrezzi: Osso 1 Atrio
+Adiacenze: Atrio Biblioteca nord, Biblioteca Atrio sud
