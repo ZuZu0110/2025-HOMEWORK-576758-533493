@@ -20,7 +20,7 @@ public class Borsa{
 	private Map<String, Integer> attrezzi;
 	private int numeroAttrezzi;
 	private int pesoMax;
-	public IOConsole io;
+	//public IOConsole io;
 
 
 	public Borsa() {
@@ -31,7 +31,7 @@ public class Borsa{
 		this.pesoMax = pesoMax;
 		this.attrezzi = new HashMap<String, Integer>(); // speriamo bastino...
 		this.numeroAttrezzi = 0;
-		this.io = new IOConsole();
+		//this.io = new IOConsole();
 	}
 
 	public boolean addAttrezzo(Attrezzo attrezzo) {
