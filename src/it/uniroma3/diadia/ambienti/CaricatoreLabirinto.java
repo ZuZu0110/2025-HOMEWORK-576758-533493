@@ -8,6 +8,7 @@ import java.nio.file.FileSystems;
 import java.util.Map;
 
 import it.uniroma3.diadia.FormatoFileNonValidoException;
+import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.AbstractPersonaggio;
 import it.uniroma3.diadia.giocatore.Cane;
@@ -23,7 +24,7 @@ public class CaricatoreLabirinto {
 
 	public CaricatoreLabirinto(String nomeFile) throws FileNotFoundException {
 		this.reader = new BufferedReader(new FileReader(ROOT_PATH + nomeFile));
-		this.builder = new LabirintoBuilder();
+		this.builder = new Labirinto.LabirintoBuilder();
 	}
 
 	public void carica() throws FormatoFileNonValidoException {
@@ -154,7 +155,7 @@ public class CaricatoreLabirinto {
 			int peso = Integer.parseInt(parti[1]);
 			String nomeStanza = parti[2];
 			// imposta come stanza corrente quella specificata, poi aggiunge l'attrezzo
-			builder.corrente = builder.stanze.get(nomeStanza);
+			builder.stanzaCorrente = builder.stanze.get(nomeStanza);
 			builder.addAttrezzo(nomeAttrezzo, peso);
 		}
 	}
@@ -245,10 +246,10 @@ public class CaricatoreLabirinto {
 	}
 
 	public Stanza getStanzaIniziale() {
-		return builder.iniziale;
+		return builder.getLabirinto().getIniziale();
 	}
 
 	public Stanza getStanzaVincente() {
-		return builder.finale;
+		return builder.getLabirinto().getStanzaVincente();
 	}
 }

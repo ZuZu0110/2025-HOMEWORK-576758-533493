@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import it.uniroma3.diadia.ConfigurazioneProperties;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.AbstractPersonaggio;
 
@@ -20,8 +21,8 @@ import it.uniroma3.diadia.giocatore.AbstractPersonaggio;
 
 public class Stanza {
 
-	static final public int NUMERO_MASSIMO_DIREZIONI = 4;
-	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
+	//static final public int NUMERO_MASSIMO_DIREZIONI = 4;
+	//static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 
 	private String nome;
 	private  List<Attrezzo> attrezzi;
@@ -38,8 +39,8 @@ public class Stanza {
 		this.nome = nome;
 		this.numeroStanzeAdiacenti = 0;
 		this.numeroAttrezzi = 0;
-		this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
-		this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
+		this.direzioni = new String[ConfigurazioneProperties.getNumeroMassimoDirezioni()];
+		this.stanzeAdiacenti = new Stanza[ConfigurazioneProperties.getNumeroMassimoDirezioni()];
 		this.attrezzi = new ArrayList<Attrezzo>();
 		this.pers=null;
 		
@@ -66,7 +67,7 @@ public class Stanza {
 				aggiornato = true;
 			}
 		if (!aggiornato)
-			if (this.numeroStanzeAdiacenti < NUMERO_MASSIMO_DIREZIONI) {
+			if (this.numeroStanzeAdiacenti < ConfigurazioneProperties.getNumeroMassimoDirezioni()) {
 				this.direzioni[numeroStanzeAdiacenti] = direzione;
 				this.stanzeAdiacenti[numeroStanzeAdiacenti] = stanza;
 				this.numeroStanzeAdiacenti++;
@@ -123,7 +124,7 @@ public class Stanza {
 			return false;
 		if(this.attrezzi.contains(attrezzo))
 			return false;
-		if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
+		if (this.numeroAttrezzi < ConfigurazioneProperties.getNumeroMassimoAttrezzi()) {
 			this.attrezzi.add(attrezzo);
 			this.numeroAttrezzi++;
 			return true;

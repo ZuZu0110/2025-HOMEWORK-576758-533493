@@ -26,4 +26,17 @@ public class ConfigurazioneProperties {
 	public static int getPesoMaxBorsa() {
 		return Integer.parseInt(properties.getProperty("peso.max.borsa"));
 	}
+	
+	public static int getNumeroMassimoDirezioni() {
+		return Integer.parseInt(properties.getProperty("numero.massimo.direzioni"));
+	}
+	
+	public static int getNumeroMassimoAttrezzi() {
+		return Integer.parseInt(properties.getProperty("numero.massimo.attrezzi"));
+	}
+	
+	public static int getSogliaMagicaDefault() {
+		return Integer.parseInt(properties.getProperty("soglia.magica.default"));
+	}
+	
 }

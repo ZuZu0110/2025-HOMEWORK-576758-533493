@@ -1,7 +1,10 @@
 package it.uniroma3.diadia.ambienti;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 
 import it.uniroma3.diadia.FormatoFileNonValidoException;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Labirinto {
 	
@@ -17,6 +20,10 @@ public class Labirinto {
 
 		this.stanzaCorrente = caricatore.getStanzaIniziale();
 		this.stanzaVincente = caricatore.getStanzaVincente();
+	}
+	
+	public static LabirintoBuilder newBuilder() {
+		return new LabirintoBuilder();
 	}
 	
 	
@@ -42,6 +49,59 @@ public class Labirinto {
 		return this.stanzaCorrente;
 	}
 	
+	public static class LabirintoBuilder{
+		private Labirinto labirinto;
+		public Map<String, Stanza> stanze;
+		public Stanza stanzaCorrente;
+		
+		public LabirintoBuilder() {
+			this.labirinto = new Labirinto();
+			this.stanze = new HashMap<>();
+		}
+		
+		public LabirintoBuilder addStanzaIniziale(String iniziale) {
+			Stanza s = new Stanza(iniziale);
+			this.labirinto.iniziale = s;
+			this.labirinto.stanzaCorrente = s;
+			this.stanzaCorrente = s;
+			this.stanze.put(iniziale, s);
+			return this;
+		}
+		
+		public LabirintoBuilder addStanza(String stanza) {
+			Stanza s = new Stanza(stanza);
+			this.stanzaCorrente = s;
+			this.stanze.put(stanza, s);
+			return this;
+		}
+		
+		public LabirintoBuilder addStanzaVincente(String vincente) {
+			Stanza s = new Stanza(vincente);
+			this.labirinto.stanzaVincente = s;
+			this.stanzaCorrente = s;
+			this.stanze.put(vincente, s);
+			return this;
+		}
+		
+		public LabirintoBuilder addAttrezzo(String nome, int peso) {
+			if(this.stanzaCorrente != null)
+				this.stanzaCorrente.addAttrezzo(new Attrezzo(nome,peso));
+			return this;
+		}
+		
+		public LabirintoBuilder addAdiacenza(String nome1, String nome2, String direzione) {
+			Stanza s1 = this.stanze.get(nome1);
+			Stanza s2 = this.stanze.get(nome2);
+			if(s1 != null && s2 != null)
+				s1.impostaStanzaAdiacente(direzione, s2);
+			return this;
+		}
+		
+		public Labirinto getLabirinto() {
+			return this.labirinto;
+		}		
+	}
+}	
 	
 	
 	
@@ -120,4 +180,4 @@ public class Labirinto {
 //    iniziale=atrio;
 //	stanzaVincente = biblioteca;
 //}
-}
+

@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.nio.file.FileSystems;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
@@ -85,12 +84,7 @@ public class DiaDia {
 	}   
 
 	public static void main(String[] argc) throws FileNotFoundException, FormatoFileNonValidoException {
-//		String ROOT_PATH = FileSystems.getDefault().getPath("").toAbsolutePath().toString();
 		IO io = new IOConsole();
-		/*LabirintoBuilder lab = new LabirintoBuilder()
-				.addStanzaIniziale("LabCampusOne")
-				.addStanzaVincente("Biblioteca")
-				.adAdiacenza("LabCampusOne", "Biblioteca", "ovest");*/
 		Labirinto labirinto = new Labirinto("labirinto.txt");
 		DiaDia gioco = new DiaDia(labirinto, io);
 		gioco.gioca();
