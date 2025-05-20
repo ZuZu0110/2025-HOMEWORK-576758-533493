@@ -17,7 +17,7 @@ public class StanzaProtected {
 	protected Stanza[] stanzeAdiacenti;
 	protected int numeroStanzeAdiacenti;
 	protected String[] direzioni;
-	protected IOConsole io;
+	//protected IOConsole io;
 
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -30,7 +30,7 @@ public class StanzaProtected {
 		this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
 		this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
 		this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
-		this.io = new IOConsole();
+		//this.io = new IOConsole();
 	}
 
 	/**

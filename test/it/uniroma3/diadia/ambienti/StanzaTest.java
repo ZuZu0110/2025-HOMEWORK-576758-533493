@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
 
+import it.uniroma3.diadia.ConfigurazioneProperties;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaTest {
@@ -93,7 +94,7 @@ public class StanzaTest {
 	
 	@Test
 	public void testImpostaStanzaAdiacenteSuperaLimiteDirezioni() {
-		for(int i=0; i<Stanza.NUMERO_MASSIMO_DIREZIONI;i++) {
+		for(int i=0; i<ConfigurazioneProperties.getNumeroMassimoDirezioni();i++) {
 			stanza.impostaStanzaAdiacente("direzione "+i, new Stanza("Stanza "+i));
 		}
 		Stanza extra = new Stanza("extra");

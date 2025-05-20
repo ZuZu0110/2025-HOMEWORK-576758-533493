@@ -22,7 +22,7 @@ public class ComandoVaiTest {
 	Stanza stanza1 = new Stanza("stanza1");
 	Comando vai = new ComandoVai();
 	Partita partita = new Partita();
-	private IO io= new IOConsole();
+	private IO io= new IOConsole(null);
 
 
 	@Test

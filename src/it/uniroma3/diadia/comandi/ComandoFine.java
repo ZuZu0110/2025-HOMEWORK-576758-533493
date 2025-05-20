@@ -7,7 +7,7 @@ import it.uniroma3.diadia.Partita;
 
 public class ComandoFine extends AbstractComando{
 
-	private IO io = new IOConsole();
+	//private IO io = new IOConsole();
 	@Override
 	public void esegui(Partita partita,IO io) {
 		this.setIo(io);
@@ -27,7 +27,7 @@ public class ComandoFine extends AbstractComando{
 	@Override
 	public void setIo(IO io) {
 		// TODO Auto-generated method stub
-		this.io=io;
+		//this.io=io;
 	}
 
 }

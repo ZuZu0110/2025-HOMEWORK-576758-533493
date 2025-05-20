@@ -6,7 +6,7 @@ import it.uniroma3.diadia.Partita;
 
 public class ComandoNonValido extends AbstractComando{
 
-	private IO io = new IOConsole();
+	//private IO io = new IOConsole();
 	
 	@Override
 	public void esegui(Partita partita,IO io) {
@@ -25,7 +25,7 @@ public class ComandoNonValido extends AbstractComando{
 	@Override
 	public void setIo(IO io) {
 		// TODO Auto-generated method stub
-		this.io=io;
+		//this.io=io;
 		
 	}
 

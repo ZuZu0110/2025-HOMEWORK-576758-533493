@@ -23,7 +23,7 @@ public class ComandoPosaTest {
 	public void eseguiAttrezzoNonPresenteTest() {
 		p.getLabirinto().setStanzaCorrente(stanza);
 		posa.setParametro(null);
-		posa.esegui(p,new IOConsole());
+		posa.esegui(p,new IOConsole(null));
 		assertEquals(null, posa.getParametro());
 	}
 	
@@ -32,7 +32,7 @@ public class ComandoPosaTest {
 		p.getLabirinto().setStanzaCorrente(stanza);
 		p.getGiocatore().getBorsa().addAttrezzo(a);
 		posa.setParametro(a.getNome());
-		posa.esegui(p,new IOConsole());
+		posa.esegui(p,new IOConsole(null));
 		assertTrue(p.getLabirinto().getStanzaCorrente().hasAttrezzo(a.getNome()));
 		assertFalse(p.getGiocatore().getBorsa().hasAttrezzo(a.getNome()));
 	}

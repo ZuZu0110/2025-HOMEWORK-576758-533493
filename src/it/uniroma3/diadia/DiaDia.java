@@ -3,7 +3,7 @@ package it.uniroma3.diadia;
 
 
 import java.io.FileNotFoundException;
-import java.nio.file.FileSystems;
+import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.comandi.Comando;
@@ -84,9 +84,11 @@ public class DiaDia {
 	}   
 
 	public static void main(String[] argc) throws FileNotFoundException, FormatoFileNonValidoException {
-		IO io = new IOConsole();
-		Labirinto labirinto = new Labirinto("labirinto.txt");
-		DiaDia gioco = new DiaDia(labirinto, io);
-		gioco.gioca();
+		try(Scanner scanner = new Scanner(System.in)){
+			IO io = new IOConsole(scanner);
+			Labirinto labirinto = new Labirinto("labirinto.txt");
+			DiaDia gioco = new DiaDia(labirinto, io);
+			gioco.gioca();
+		}
 	}
 }
