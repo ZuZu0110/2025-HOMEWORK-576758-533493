@@ -5,8 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.FileSystems;
-import java.util.Map;
 
+import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.FormatoFileNonValidoException;
 import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -104,7 +104,12 @@ public class CaricatoreLabirinto {
 
 	    String stanzaDa = tokens[0];
 	    String stanzaA = tokens[1];
-	    String direzione = tokens[2];
+	    Direzione direzione;
+	    try {
+	    	 direzione = Direzione.valueOf(tokens[2].toUpperCase());
+	    }catch (IllegalArgumentException e) {
+	    	throw new FormatoFileNonValidoException("Direzione non valida: " + tokens[2]);
+	    }
 
 		Stanza partenza = builder.stanze.get(stanzaDa);
 	    Stanza destinazione = builder.stanze.get(stanzaA);
@@ -126,7 +131,7 @@ public class CaricatoreLabirinto {
 	private void creaStanzaBloccata(String dati) {
 	    String[] parti = dati.split(" ");
 	    String nome = parti[0];
-	    String direzioneBloccata = parti[1];
+	    Direzione direzioneBloccata = Direzione.valueOf(parti[1].toUpperCase());
 	    String attrezzoSbloccante = parti[2];
 	    builder.stanze.put(nome, new StanzaBloccata(nome, direzioneBloccata, attrezzoSbloccante));
 	}

@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.DiaDia;
+import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.IOSimulator;
@@ -33,7 +34,7 @@ public class ComandoVaiTest {
 	@Test
 	public void eseguiDirezioneEsistenteTest() {
 		partita.getLabirinto().setStanzaCorrente(stanza);
-		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente("sud", stanza1);
+		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente(Direzione.sud, stanza1);
 		vai.setParametro("sud");
 		vai.esegui(partita,io);
 		assertEquals(stanza1,partita.getLabirinto().getStanzaCorrente());
@@ -42,7 +43,7 @@ public class ComandoVaiTest {
 	@Test
 	public void eseguiStanzaNonPresenteTest() {
 		partita.getLabirinto().setStanzaCorrente(stanza);
-		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente("sud", stanza1);
+		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente(Direzione.sud, stanza1);
 		vai.setParametro("nord");
 		vai.esegui(partita,io);
 		assertEquals(stanza,partita.getLabirinto().getStanzaCorrente());

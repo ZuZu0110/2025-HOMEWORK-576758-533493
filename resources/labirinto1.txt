@@ -1,0 +1,8 @@
+Stanze: Atrio, Biblioteca  
+Inizio: Atrio
+Vincente: Biblioteca
+Attrezzi: Osso 1 AtriolaN11
+Adiacenze: 
+Atrio Biblioteca nord
+Biblioteca Atrio sud
+Personaggi: Cane Scooby "BAU" Chiave Atrio

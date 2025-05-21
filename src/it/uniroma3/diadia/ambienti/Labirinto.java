@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.FormatoFileNonValidoException;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -89,7 +90,7 @@ public class Labirinto {
 			return this;
 		}
 		
-		public LabirintoBuilder addAdiacenza(String nome1, String nome2, String direzione) {
+		public LabirintoBuilder addAdiacenza(String nome1, String nome2, Direzione direzione) {
 			Stanza s1 = this.stanze.get(nome1);
 			Stanza s2 = this.stanze.get(nome2);
 			if(s1 != null && s2 != null)

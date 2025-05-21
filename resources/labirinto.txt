@@ -1,10 +1,10 @@
 Stanze: Atrio, Biblioteca, AulaN11, AulaN10, Laboratorio 
-StanzaBloccata: AulaN14 nord biglietto
-StanzaBuia: AulaN3 torcia
+StanzaBloccata: AulaN14 nord Biglietto
+StanzaBuia: AulaN3 Torcia
 StanzaMagica: AulaN8 3
 Inizio: Atrio
 Vincente: Biblioteca
-Attrezzi: Osso 1 Atrio, Lanterna 1 AulaN10, Torcia 1 AulaN11, PiedeDiPorco 1 AulaN3, Sasso 1 AulaN8, Biglietto 1 AulaN3 
+Attrezzi: Osso 1 Atrio, Lanterna 2 AulaN10, Torcia 1 AulaN11, PiedeDiPorco 7 AulaN3, Sasso 3 AulaN8, Biglietto 1 AulaN3 
 Adiacenze: 
 Atrio AulaN14 nord
 Atrio AulaN11 est 

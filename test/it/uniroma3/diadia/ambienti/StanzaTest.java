@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.Test;
 
 import it.uniroma3.diadia.ConfigurazioneProperties;
+import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaTest {
@@ -80,25 +81,24 @@ public class StanzaTest {
 	// TEST PER impostaStanzaAdiacente
 	@Test
 	public void testImpostaStanzaAdiacenteNuovaDirezione() {
-		stanza.impostaStanzaAdiacente("nord", stanza1);
-		assertEquals(stanza1, stanza.getStanzaAdiacente("nord"), "la stanza adiacente di stanza in direzione nord deve essere stanza1");
+		stanza.impostaStanzaAdiacente(Direzione.nord, stanza1);
+		assertEquals(stanza1, stanza.getStanzaAdiacente(Direzione.nord), "la stanza adiacente di stanza in direzione nord deve essere stanza1");
 	}
 	
 	@Test
 	public void testImpostaStanzaAdiacenteAggiornamentoStanzaEsistente() {
 		Stanza nuova = new Stanza("nuovaStanza");
-		stanza.impostaStanzaAdiacente("nord", stanza1);
-		stanza.impostaStanzaAdiacente("nord", nuova);
-		assertEquals(nuova, stanza.getStanzaAdiacente("nord"), "la nuova Stanza adiacente in direzione nord divente 'nuova'");
+		stanza.impostaStanzaAdiacente(Direzione.nord, stanza1);
+		stanza.impostaStanzaAdiacente(Direzione.nord, nuova);
+		assertEquals(nuova, stanza.getStanzaAdiacente(Direzione.nord), "la nuova Stanza adiacente in direzione nord divente 'nuova'");
 	}
 	
 	@Test
 	public void testImpostaStanzaAdiacenteSuperaLimiteDirezioni() {
-		for(int i=0; i<ConfigurazioneProperties.getNumeroMassimoDirezioni();i++) {
-			stanza.impostaStanzaAdiacente("direzione "+i, new Stanza("Stanza "+i));
+		for(Direzione dir : Direzione.values()) {
+			stanza.impostaStanzaAdiacente(dir, new Stanza("Stanza "+dir));
 		}
 		Stanza extra = new Stanza("extra");
-		stanza.impostaStanzaAdiacente("nord-est", extra);
-		assertNull(stanza.getStanzaAdiacente("nord-est"), "la stanza extra non dovrebbe essere aggiunta");
+		assertEquals(ConfigurazioneProperties.getNumeroMassimoDirezioni(), stanza.getDirezioni());
 	}
 }

@@ -2,16 +2,17 @@ package it.uniroma3.diadia.ambienti;
 
 import java.util.Random;
 
+import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaBloccata extends Stanza{
 
-	private String direzioneBloccata;
+	private Direzione direzioneBloccata;
 	private String attrezzoSbloccante;
 	Random rand = new Random();
 	int codice = rand.nextInt(9000)+1000;
 
-	public StanzaBloccata(String nome, String direzioneBloccata, String attrezzoSbloccante) {
+	public StanzaBloccata(String nome, Direzione direzioneBloccata, String attrezzoSbloccante) {
 		super(nome);
 		this.direzioneBloccata = direzioneBloccata;
 		this.attrezzoSbloccante = attrezzoSbloccante;
@@ -19,10 +20,10 @@ public class StanzaBloccata extends Stanza{
 	}
 
 	@Override
-	public Stanza getStanzaAdiacente(String direzione) {
+	public Stanza getStanzaAdiacente(Direzione direzione) {
 		Stanza stanza = null;
-		String[] direzioni = this.getDirezioni();
-		if(this.direzioneBloccata.equals(direzione)) {
+		Direzione[] direzioni = this.getDirezioni();
+		if(this.direzioneBloccata == direzione) {
 			for(Attrezzo a : this.getAttrezzi()) {
 				if(a!=null) {
 					if(a.getNome().equals(attrezzoSbloccante)) {
@@ -36,7 +37,7 @@ public class StanzaBloccata extends Stanza{
 			return stanza;
 		}
 		for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-			if (direzioni[i].equals(direzione))
+			if (direzioni[i] == direzione)
 				stanza = this.stanzeAdiacenti[i];
 		return stanza;
 
@@ -50,7 +51,7 @@ public class StanzaBloccata extends Stanza{
 		return this.attrezzoSbloccante;
 	}
 	
-	public String getDirezioneBloccata() {
+	public Direzione getDirezioneBloccata() {
 		return this.direzioneBloccata;
 	}
 

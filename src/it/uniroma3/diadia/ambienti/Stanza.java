@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import it.uniroma3.diadia.ConfigurazioneProperties;
+import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.AbstractPersonaggio;
 
@@ -29,7 +30,7 @@ public class Stanza {
 	public int numeroAttrezzi;   
 	public Stanza[] stanzeAdiacenti;
 	public int numeroStanzeAdiacenti;
-	private String[] direzioni;
+	private Direzione[] direzioni;
 	public AbstractPersonaggio pers;
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -39,7 +40,7 @@ public class Stanza {
 		this.nome = nome;
 		this.numeroStanzeAdiacenti = 0;
 		this.numeroAttrezzi = 0;
-		this.direzioni = new String[ConfigurazioneProperties.getNumeroMassimoDirezioni()];
+		this.direzioni = new Direzione[ConfigurazioneProperties.getNumeroMassimoDirezioni()];
 		this.stanzeAdiacenti = new Stanza[ConfigurazioneProperties.getNumeroMassimoDirezioni()];
 		this.attrezzi = new ArrayList<Attrezzo>();
 		this.pers=null;
@@ -59,10 +60,10 @@ public class Stanza {
 	 * @param direzione direzione in cui sara' posta la stanza adiacente.
 	 * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
 	 */
-	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
+	public void impostaStanzaAdiacente(Direzione direzione, Stanza stanza) {
 		boolean aggiornato = false;
 		for(int i=0; i<this.direzioni.length; i++)
-			if (direzione.equals(this.direzioni[i])) {
+			if (direzione == this.direzioni[i]) {
 				this.stanzeAdiacenti[i] = stanza;
 				aggiornato = true;
 			}
@@ -78,10 +79,10 @@ public class Stanza {
 	 * Restituisce la stanza adiacente nella direzione specificata
 	 * @param direzione
 	 */
-	public Stanza getStanzaAdiacente(String direzione) {
+	public Stanza getStanzaAdiacente(Direzione direzione) {
 		Stanza stanza = null;
 		for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-			if (this.direzioni[i].equals(direzione))
+			if (this.direzioni[i] == direzione)
 				stanza = this.stanzeAdiacenti[i];
 		return stanza;
 	}
@@ -143,7 +144,7 @@ public class Stanza {
 		StringBuilder risultato = new StringBuilder();
 		risultato.append(this.nome);
 		risultato.append("\nUscite: ");
-		for (String direzione : this.direzioni)
+		for (Direzione direzione : this.direzioni)
 			if (direzione!=null)
 				risultato.append(" " + direzione);
 		risultato.append("\nAttrezzi nella stanza: ");
@@ -237,8 +238,8 @@ public class Stanza {
 	}
 
 
-	public String[] getDirezioni() {
-		String[] direzioni = new String[this.numeroStanzeAdiacenti];
+	public Direzione[] getDirezioni() {
+		Direzione[] direzioni = new Direzione[this.numeroStanzeAdiacenti];
 		for(int i=0; i<this.numeroStanzeAdiacenti; i++)
 			direzioni[i] = this.direzioni[i];
 		return direzioni;
