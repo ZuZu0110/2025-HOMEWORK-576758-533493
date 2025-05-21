@@ -81,16 +81,16 @@ public class StanzaTest {
 	// TEST PER impostaStanzaAdiacente
 	@Test
 	public void testImpostaStanzaAdiacenteNuovaDirezione() {
-		stanza.impostaStanzaAdiacente(Direzione.nord, stanza1);
-		assertEquals(stanza1, stanza.getStanzaAdiacente(Direzione.nord), "la stanza adiacente di stanza in direzione nord deve essere stanza1");
+		stanza.impostaStanzaAdiacente(Direzione.NORD, stanza1);
+		assertEquals(stanza1, stanza.getStanzaAdiacente(Direzione.NORD), "la stanza adiacente di stanza in direzione NORD deve essere stanza1");
 	}
 	
 	@Test
 	public void testImpostaStanzaAdiacenteAggiornamentoStanzaEsistente() {
 		Stanza nuova = new Stanza("nuovaStanza");
-		stanza.impostaStanzaAdiacente(Direzione.nord, stanza1);
-		stanza.impostaStanzaAdiacente(Direzione.nord, nuova);
-		assertEquals(nuova, stanza.getStanzaAdiacente(Direzione.nord), "la nuova Stanza adiacente in direzione nord divente 'nuova'");
+		stanza.impostaStanzaAdiacente(Direzione.NORD, stanza1);
+		stanza.impostaStanzaAdiacente(Direzione.NORD, nuova);
+		assertEquals(nuova, stanza.getStanzaAdiacente(Direzione.NORD), "la nuova Stanza adiacente in direzione NORD divente 'nuova'");
 	}
 	
 	@Test

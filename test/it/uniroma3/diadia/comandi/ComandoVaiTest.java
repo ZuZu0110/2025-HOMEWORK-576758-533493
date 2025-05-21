@@ -34,8 +34,8 @@ public class ComandoVaiTest {
 	@Test
 	public void eseguiDirezioneEsistenteTest() {
 		partita.getLabirinto().setStanzaCorrente(stanza);
-		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente(Direzione.sud, stanza1);
-		vai.setParametro("sud");
+		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente(Direzione.SUD, stanza1);
+		vai.setParametro("SUD");
 		vai.esegui(partita,io);
 		assertEquals(stanza1,partita.getLabirinto().getStanzaCorrente());
 	}
@@ -43,7 +43,7 @@ public class ComandoVaiTest {
 	@Test
 	public void eseguiStanzaNonPresenteTest() {
 		partita.getLabirinto().setStanzaCorrente(stanza);
-		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente(Direzione.sud, stanza1);
+		partita.getLabirinto().getStanzaCorrente().impostaStanzaAdiacente(Direzione.SUD, stanza1);
 		vai.setParametro("nord");
 		vai.esegui(partita,io);
 		assertEquals(stanza,partita.getLabirinto().getStanzaCorrente());
